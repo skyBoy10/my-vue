@@ -1,7 +1,8 @@
 <template>
-    <div class="flex-ccc">
+    <div class="container flex-ccc">
         <div class="flex-rcc">
-            <button type="button" @click="addFunc">+</button>
+            <button class="btn" type="button" @click="addFunc">+</button>
+            <button class="btn-1" type="button" @click="gotoOther">go</button>
         </div>
         <div>
             <div>store的count：{{ this.num }}</div>
@@ -19,7 +20,6 @@ export default {
         };
     },
     created () {
-        console.log(this.$store);
     },
     computed: {
         ...mapState('homeModel', {
@@ -32,10 +32,32 @@ export default {
     methods: {
         addFunc () {
             this.$store.dispatch('homeModel/addFun', 1);
+        },
+        gotoOther () {
+            this.$router.goRight('/test');
         }
     }
 }
 </script>
-<style scoped>
-    @import '../assets/common.less';
-</style>>
+<style lang="less" scoped>
+@import '../assets/common.less';
+
+.container {
+    height: 100%;
+    margin: 0;
+    border: 1px #000 solid;
+
+    .btn {
+        padding: .15rem;
+        font-size: .26rem;
+        background-color: whitesmoke;
+    }
+
+    .btn-1 {
+        padding: .15rem;
+        margin-left: .2rem;
+        font-size: .26rem;
+        background-color: whitesmoke;
+    }
+}
+</style>
